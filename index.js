@@ -18,6 +18,8 @@ console.log(baseDir);
 
 function exe() {
     copy(__dirname + '/pom.xml', baseDir + '/pom.xml');
+    copy(__dirname + '/test.xml', baseDir + '/test.xml');
+    copy(__dirname + '/page-demo.xml', baseDir + '/page-demo.xml');
     //mvn.execute(['-f ' + baseDir + '/pom.xml', 'dependency:copy-dependencies']);
     exec('mvn -f ' + baseDir + '/pom.xml package', function(){
         var exec = require('child_process').exec;
