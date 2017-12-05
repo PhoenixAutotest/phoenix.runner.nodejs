@@ -13,53 +13,28 @@ function copy(src, dst) {
 
 var os = require('os');
 console.log(os.homedir());
-var baseDir = os.homedir() + '/.phoenix';
+var baseDir = os.homedir() + '/phoenix';
+console.log(baseDir);
 
-fs.exists(baseDir, function (exists) {
-    if(!exists) {
-        fs.mkdir(baseDir);
-    }
-});
-
-copy(__dirname + '/pom.xml', baseDir + '/pom.xml');
-mvn.execute(['-f ' + baseDir + '/pom.xml', 'dependency:copy-dependencies']);
-
-fs.exists(baseDir + '/target/lib', function (exists) {
-    if(!exists) {
-        fs.mkdir(baseDir + '/target/lib');
-    }
-});
-
-var path = require('path');
-
-function travel(dir, callback) {
-    fs.readdirSync(dir).forEach(function(file) {
-        var pathname = path.join(dir, file);
-
-        if(fs.statSync(pathname).isDirectory()) {
-            travel(pathname, callback);
-        }else {
-            callback(pathname, file);
-        }
+function exe() {
+    copy(__dirname + '/pom.xml', baseDir + '/pom.xml');
+    //mvn.execute(['-f ' + baseDir + '/pom.xml', 'dependency:copy-dependencies']);
+    exec('mvn -f ' + baseDir + '/pom.xml package', function(){
+        var exec = require('child_process').exec;
+        exec('java -jar ' + baseDir + '/autotest.suite.runner-1.0.1-20170824-20171205.093339-1.jar -runners test.xml', function (err, stdout, stderr) {
+            console.log(stdout);
+            console.log(err);
+        });
     });
 }
 
-fs.exists(baseDir + '/target/dependency', function (exists) {
-   if(exists) {
-       travel(baseDir + '/target/dependency', function (path, file) {
-           copy(path, baseDir + '/target/lib/' + file);
-       });
-
-       fs.readdirSync(baseDir + '/target/lib/').forEach(function(file) {
-           if(file === 'autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar') {
-               copy(baseDir + '/target/lib/' + file, baseDir + '/target/' + file);
-           }
-       });
-
-       var exec = require('child_process').exec;
-       exec('java -jar ' + baseDir + '/target/autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar -runners test.xml', function (err, stdout, stderr) {
-           console.log(stdout);
-           console.log(err);
-       });
-   }
+fs.exists(baseDir, function (exists) {
+    console.log(exists);
+    if(!exists) {
+        fs.mkdir(baseDir, function(){
+            exe();
+        });
+    }else{
+        exe();
+    }
 });
