@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
-var mvn = require('maven');
-mvn = new mvn();
-//mvn.execute(['-f ' + __dirname + '/pom.xml', 'dependency:copy-dependencies']);
 var exec = require('child_process').exec;
-//exec('mvn -f ' + __dirname + '/pom.xml dependency:copy-dependencies');
 
 var fs = require('fs');
 function copy(src, dst) {
