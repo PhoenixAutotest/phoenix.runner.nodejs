@@ -24,8 +24,9 @@
   "dependencies": {},
   "files": [
     "index.js",
-    "autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar",
-    "lib"
+    "pom.xml",
+    "test.xml",
+    "page-demo.xml"
   ],
   "java": {
     "dependencies": [
