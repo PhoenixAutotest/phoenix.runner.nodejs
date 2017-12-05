@@ -1,0 +1,24 @@
+{
+  "name": "phoenix.runner.nodejs",
+  "version": "1.0.0",
+  "description": "phoenix runner nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhoenixAutotest/phoenix.runner.nodejs.git"
+  },
+  "keywords": [
+    "phoenix",
+    "selenium",
+    "nodejs"
+  ],
+  "author": "suren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhoenixAutotest/phoenix.runner.nodejs/issues"
+  },
+  "homepage": "https://github.com/PhoenixAutotest/phoenix.runner.nodejs#readme"
+}
