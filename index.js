@@ -11,7 +11,9 @@ function copy(src, dst) {
     fs.writeFileSync(dst, fs.readFileSync(src));
 }
 
-var baseDir = '~/.phoenix';
+var os = require('os');
+console.log(os.homedir());
+var baseDir = os.homedir() + '/.phoenix';
 
 fs.exists(baseDir, function (exists) {
     if(!exists) {
