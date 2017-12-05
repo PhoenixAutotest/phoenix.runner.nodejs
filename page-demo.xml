@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suren:autotest xmlns:suren="http://surenpi.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://surenpi.com http://surenpi.com/schema/autotest/autotest.web.framework.xsd ">
+	<suren:engine driver="chrome"/>
+	<suren:pages pagePackage="">
+		<suren:page class="com.surenpi.autotest.demo.Hello" url="http://baidu.com">
+			<suren:field name="name" type="input" byId="kw" data="surenpi" />
+			<suren:field name="news" type="button" byLinkText="新闻" />
+		</suren:page>
+		<suren:page class="com.surenpi.autotest.demo.Gril">
+			<suren:field name="name" type="button" />
+		</suren:page>
+		<suren:page class="com.surenpi.autotest.demo.Body">
+			<suren:field name="name" type="button" />
+		</suren:page>
+	</suren:pages>
+</suren:autotest>

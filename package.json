@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "phoenix runner nodejs",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +20,21 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PhoenixAutotest/phoenix.runner.nodejs/issues"
+  },
+  "dependencies": {},
+  "files": [
+    "index.js",
+    "autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar",
+    "lib"
+  ],
+  "java": {
+    "dependencies": [
+      {
+        "groupId": "com.surenpi.autotest",
+        "artifactId": "autotest.suite.runner",
+        "version": "1.0.1-20170824-SNAPSHOT"
+      }
+    ]
   },
   "homepage": "https://github.com/PhoenixAutotest/phoenix.runner.nodejs#readme"
 }
