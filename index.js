@@ -11,9 +11,6 @@ function copy(src, dst) {
     fs.writeFileSync(dst, fs.readFileSync(src));
 }
 
-copy(__dirname + '/pom.xml', '~/.phoenix/pom.xml');
-mvn.execute(['-f ~/pom.xml', 'dependency:copy-dependencies']);
-
 var baseDir = '~/.phoenix';
 
 fs.exists(baseDir, function (exists) {
@@ -21,6 +18,9 @@ fs.exists(baseDir, function (exists) {
         fs.mkdir(baseDir);
     }
 });
+
+copy(__dirname + '/pom.xml', baseDir + '/pom.xml');
+mvn.execute(['-f ' + baseDir + '/pom.xml', 'dependency:copy-dependencies']);
 
 fs.exists(baseDir + '/target/lib', function (exists) {
     if(!exists) {
