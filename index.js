@@ -2,17 +2,16 @@
 
 var mvn = require('maven');
 mvn = new mvn();
-console.log(mvn.execute);
-mvn.execute(['dependency:copy-dependencies', '-o']);
+mvn.execute(['-f ' + __dirname + '/pom.xml', 'dependency:copy-dependencies']);
 
 var fs = require('fs');
 function copy(src, dst) {
     fs.writeFileSync(dst, fs.readFileSync(src));
 }
 
-fs.exists('target/lib', function (exists) {
+fs.exists(__dirname + '/target/lib', function (exists) {
     if(!exists) {
-        fs.mkdir('target/lib');
+        fs.mkdir(__dirname + '/target/lib');
     }
 });
 
@@ -30,18 +29,18 @@ function travel(dir, callback) {
     });
 }
 
-travel('target/dependency', function (path, file) {
-    copy(path, 'target/lib/' + file);
+travel(__dirname + 'target/dependency', function (path, file) {
+    copy(path, __dirname + 'target/lib/' + file);
 });
 
-fs.readdirSync('target/lib/').forEach(function(file) {
+fs.readdirSync(__dirname + 'target/lib/').forEach(function(file) {
     if(file === 'autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar') {
-        copy('target/lib/' + file, 'target/' + file);
+        copy(__dirname + 'target/lib/' + file, __dirname + 'target/' + file);
     }
 });
 
 var exec = require('child_process').exec;
-exec('java -jar target/autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar -runners test.xml', function (err, stdout, stderr) {
+exec('java -jar ' + __dirname + '/target/autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar -runners test.xml', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(err);
 });
