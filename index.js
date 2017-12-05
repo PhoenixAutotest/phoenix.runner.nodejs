@@ -29,13 +29,13 @@ function travel(dir, callback) {
     });
 }
 
-travel(__dirname + 'target/dependency', function (path, file) {
-    copy(path, __dirname + 'target/lib/' + file);
+travel(__dirname + '/target/dependency', function (path, file) {
+    copy(path, __dirname + '/target/lib/' + file);
 });
 
-fs.readdirSync(__dirname + 'target/lib/').forEach(function(file) {
+fs.readdirSync(__dirname + '/target/lib/').forEach(function(file) {
     if(file === 'autotest.suite.runner-1.0.1-20170824-SNAPSHOT.jar') {
-        copy(__dirname + 'target/lib/' + file, __dirname + 'target/' + file);
+        copy(__dirname + '/target/lib/' + file, __dirname + '/target/' + file);
     }
 });
 
