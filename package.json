@@ -32,7 +32,7 @@
       {
         "groupId": "com.surenpi.autotest",
         "artifactId": "autotest.suite.runner",
-        "version": "1.0.1-20170824-SNAPSHOT"
+        "version": "1.0.1-20170718"
       }
     ]
   },

@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.surenpi.autotest</groupId>
+		<artifactId>autotest.parent</artifactId>
+		<version>1.0.1-20170815-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>autotest.suite.runner.nodejs</artifactId>
+	<version>1.0.1-20170824-SNAPSHOT</version>
+	
+	<name>autotest.suite.runner</name>
+	<description>测试套件启动类</description>
+	<url>http://surenpi.com</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+                            <outputDirectory>lib</outputDirectory>
+                            <excludeTransitive>false</excludeTransitive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.shell</groupId>
+			<artifactId>spring-shell</artifactId>
+			<version>1.2.0.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context-support</artifactId>
+				</exclusion>
+				<exclusion>
+				    <groupId>com.google.guava</groupId>
+				    <artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- 单元测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+			<artifactId>autotest.web.framework</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+			<artifactId>autotest.webdriver.downloader</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>com.surenpi.autotest</groupId>
+        	<artifactId>autotest.utils</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+			<artifactId>autotest.code.generator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+			<artifactId>autotest.code.compiler</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+			<artifactId>autotest.datasource</artifactId>
+		</dependency>
+        
+        <dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.10</version>
+        </dependency>
+
+		<dependency>
+			<groupId>com.surenpi.autotest</groupId>
+            <artifactId>autotest.suite.runner</artifactId>
+            <version>1.0.1-20170824-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
