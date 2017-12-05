@@ -14,7 +14,13 @@ function copy(src, dst) {
 copy(__dirname + '/pom.xml', '~/.phoenix/pom.xml');
 mvn.execute(['-f ~/pom.xml', 'dependency:copy-dependencies']);
 
-var baseDir = '~';
+var baseDir = '~/.phoenix';
+
+fs.exists(baseDir, function (exists) {
+    if(!exists) {
+        fs.mkdir(baseDir);
+    }
+});
 
 fs.exists(baseDir + '/target/lib', function (exists) {
     if(!exists) {
