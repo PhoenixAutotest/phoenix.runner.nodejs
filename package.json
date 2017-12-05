@@ -1,6 +1,6 @@
 {
   "name": "phoenix.runner.nodejs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "phoenix runner nodejs",
   "main": "index.js",
   "bin": "index.js",
