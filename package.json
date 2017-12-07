@@ -21,7 +21,10 @@
   "bugs": {
     "url": "https://github.com/PhoenixAutotest/phoenix.runner.nodejs/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cli": "~1.0.0",
+    "commander": "~2.12.2"
+  },
   "files": [
     "index.js",
     "pom.xml",
